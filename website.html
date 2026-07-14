@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusaBooks | Premium Medical & Dental Textbook Hub</title>
+    <!-- Tailwind CSS CDN for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for clean, premium icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col min-h-screen relative overflow-x-hidden antialiased">
+
+    <!-- NAV BAR -->
+    <header class="bg-white/90 backdrop-blur-md border-b border-slate-100 sticky top-0 z-40 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-3 cursor-pointer group" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="bg-blue-600 text-white p-2.5 rounded-xl shadow-md shadow-blue-100 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-book-medical text-lg"></i>
+                    </div>
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900">Musa<span class="text-blue-600">Books</span></span>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="hidden md:flex flex-1 max-w-md mx-8">
+                    <div class="relative w-full">
+                        <input type="text" id="searchInput" placeholder="Search MBBS & BDS books..." class="w-full bg-slate-50 border border-slate-200/80 rounded-xl pl-11 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all duration-200">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-3 text-slate-400 text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Utilities -->
+                <div class="flex items-center gap-5">
+                    <a href="#owner-profile" class="hidden sm:flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-blue-600 transition-colors">
+                        <i class="fa-regular fa-id-card text-sm"></i> Contact Owner
+                    </a>
+                    <button onclick="toggleCart(true)" class="relative p-2.5 bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-600 rounded-xl transition-all duration-300">
+                        <i class="fa-solid fa-cart-shopping text-base"></i>
+                        <span id="cartCount" class="absolute -top-1 -right-1 bg-blue-600 text-white text-[10px] font-bold rounded-full w-4.5 h-4.5 flex items-center justify-center shadow-md">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <section class="bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 text-white py-16 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center md:text-left md:flex items-center justify-between gap-12">
+            <div class="max-w-xl space-y-5">
+                <span class="bg-blue-500/10 text-blue-300 border border-blue-500/20 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase inline-flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-ping"></span> 100% Genuine Print Guarantee
+                </span>
+                <h1 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight">
+                    Premium Portal for <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">MBBS & BDS</span> Textbooks
+                </h1>
+                <p class="text-slate-300 text-sm md:text-base leading-relaxed">
+                    Get authentic curriculums, standard clinical tools, and study keys. Verified packaging, student-friendly rates, and trusted delivery across Pakistan.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
+                    <div class="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-xs">
+                        <i class="fa-solid fa-truck-fast text-blue-400"></i> Fast Dispatch
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-xs">
+                        <i class="fa-solid fa-receipt text-green-400"></i> Cash on Delivery
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trust Badge Card -->
+            <div class="hidden lg:block w-80 bg-white/[0.03] border border-white/10 rounded-2xl p-6 relative overflow-hidden backdrop-blur-md shadow-2xl">
+                <i class="fa-solid fa-user-doctor text-blue-500/5 text-9xl absolute -right-6 -bottom-6"></i>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2 text-blue-400 font-bold text-xs uppercase tracking-wide">
+                        <i class="fa-solid fa-circle-check"></i> Campus Support
+                    </div>
+                    <div class="text-2xl font-extrabold text-white leading-tight">By Students, For Students</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">Founded by Talal Musa, providing verified MBBS & BDS syllabus requirements straight to your hostel or doorstep.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN BODY -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full">
+        
+        <!-- Category Filters & Utilities -->
+        <div class="flex flex-col gap-4 mb-8">
+            <div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar scroll-smooth">
+                <button onclick="filterCategory('All')" class="category-btn px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 bg-blue-600 text-white shadow-lg shadow-blue-100 shrink-0">All Specialties</button>
+                <button onclick="filterCategory('Anatomy')" class="category-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 shrink-0">Anatomy</button>
+                <button onclick="filterCategory('Physiology')" class="category-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 shrink-0">Physiology</button>
+                <button onclick="filterCategory('Pathology')" class="category-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 shrink-0">Pathology</button>
+                <button onclick="filterCategory('Pharmacology')" class="category-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 shrink-0">Pharmacology</button>
+                <button onclick="filterCategory('Medicine')" class="category-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 shrink-0">Medicine</button>
+                <button onclick="filterCategory('Dental')" class="category-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 shrink-0">Dental Surgery</button>
+            </div>
+
+            <!-- Sorting & Stock Toggle -->
+            <div class="flex flex-col sm:flex-row justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-100">
+                <div class="flex items-center gap-3">
+                    <label for="sortBy" class="text-xs font-bold text-slate-400 uppercase">Sort By:</label>
+                    <select id="sortBy" onchange="sortBooks()" class="bg-slate-50 border border-slate-200 text-slate-700 text-xs rounded-lg px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        <option value="featured">Featured</option>
+                        <option value="low-high">Price: Low to High</option>
+                        <option value="high-low">Price: High to Low</option>
+                        <option value="rating">Top Rated</option>
+                    </select>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="checkbox" id="stockOnly" onchange="toggleStockOnly()" class="rounded text-blue-600 focus:ring-blue-500 h-4 w-4 border-slate-300 cursor-pointer">
+                    <label for="stockOnly" class="text-xs font-semibold text-slate-600 cursor-pointer">In Stock Only</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book Grid Section -->
+        <section class="mb-16">
+            <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-8">
+                <div>
+                    <h2 class="text-xl font-extrabold text-slate-900 tracking-tight" id="sectionTitle">All Academic Catalogues</h2>
+                    <p class="text-xs text-slate-400 mt-0.5">Authentic prints matching standard PMDC / NUMS curriculum guidelines.</p>
+                </div>
+                <span class="inline-flex bg-slate-100 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-lg h-fit w-fit" id="bookCount">Showing 0 books</span>
+            </div>
+
+            <div id="bookGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                <!-- Dynamic cards populated here -->
+            </div>
+        </section>
+
+        <!-- OWNER / FOUNDER PROFILE SECTION -->
+        <section id="owner-profile" class="bg-white border border-slate-100 rounded-3xl p-6 sm:p-10 shadow-xl shadow-slate-100/30 mb-10 scroll-mt-24 relative overflow-hidden">
+            <div class="absolute right-0 top-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-10"></div>
+            <div class="flex flex-col lg:flex-row gap-8 items-center">
+                <!-- Left Avatar Display -->
+                <div class="relative shrink-0">
+                    <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center text-4xl font-extrabold shadow-lg shadow-blue-200">
+                        TM
+                    </div>
+                    <div class="absolute -bottom-2 -right-2 bg-green-500 border-4 border-white text-white p-1.5 rounded-full text-xs shadow-sm" title="Active and ready to help">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                </div>
+
+                <!-- Owner bio and direct details -->
+                <div class="flex-1 space-y-4 text-center lg:text-left">
+                    <div>
+                        <span class="text-blue-600 text-xs font-bold uppercase tracking-wider">Meet the Founder</span>
+                        <h3 class="text-2xl font-extrabold text-slate-900 mt-1">Talal Musa — Curator of MusaBooks</h3>
+                        <p class="text-slate-500 text-sm mt-2 max-w-2xl mx-auto lg:mx-0">
+                            "Hello! As a dedicated medical book resource curator, I created MusaBooks to cut down the hassle of searching and overpaying for essential medical textbooks. We work directly with leading publishing distribution centers to bring the absolute lowest print prices directly to your campus doorsteps."
+                        </p>
+                    </div>
+
+                    <!-- Direct Contact Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2 text-left">
+                        <a href="https://wa.me/923124244895" target="_blank" class="p-3 bg-slate-50 hover:bg-emerald-50 rounded-xl border border-slate-100 flex items-center gap-3 transition-colors">
+                            <i class="fa-brands fa-whatsapp text-emerald-500 text-xl"></i>
+                            <div>
+                                <span class="block text-[10px] uppercase font-bold text-slate-400">WhatsApp Chat</span>
+                                <span class="text-xs font-bold text-slate-700">0312 4244895</span>
+                            </div>
+                        </a>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-blue-500 text-lg"></i>
+                            <div>
+                                <span class="block text-[10px] uppercase font-bold text-slate-400">Direct Call / SMS</span>
+                                <span class="text-xs font-bold text-slate-700">0321 4525325</span>
+                            </div>
+                        </div>
+                        <a href="mailto:fanofbabarazam7@gmail.com" class="p-3 bg-slate-50 hover:bg-blue-50 rounded-xl border border-slate-100 flex items-center gap-3 transition-colors">
+                            <i class="fa-regular fa-envelope text-blue-500 text-xl"></i>
+                            <div>
+                                <span class="block text-[10px] uppercase font-bold text-slate-400">Email Inquiry</span>
+                                <span class="text-xs font-bold text-slate-700 truncate block max-w-[140px]">fanofbabarazam7@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="https://instagram.com/x.musa.exe.x" target="_blank" class="p-3 bg-slate-50 hover:bg-pink-50 rounded-xl border border-slate-100 flex items-center gap-3 transition-colors">
+                            <i class="fa-brands fa-instagram text-rose-500 text-xl"></i>
+                            <div>
+                                <span class="block text-[10px] uppercase font-bold text-slate-400">Instagram Profile</span>
+                                <span class="text-xs font-bold text-slate-700">@x.musa.exe.x</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- CTA Actions -->
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-3 pt-2">
+                        <a href="https://wa.me/923124244895" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-5 py-3 rounded-xl transition-all shadow-md shadow-emerald-100 inline-flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Inquiries / Custom Book Demands
+                        </a>
+                        <a href="https://instagram.com/x.musa.exe.x" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-5 py-3 rounded-xl transition-all shadow-md inline-flex items-center gap-2">
+                            <i class="fa-brands fa-instagram text-sm"></i> Follow on Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- DETAILED BOOK MODAL POPUP -->
+    <div id="bookModal" class="fixed inset-0 bg-black/60 hidden z-50 items-center justify-center p-4 backdrop-blur-sm transition-all duration-300">
+        <div class="bg-white rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl transform scale-95 opacity-0 transition-all duration-300 flex flex-col md:flex-row relative" id="modalContent">
+            <!-- Close trigger -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 p-2 rounded-full transition-colors z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <!-- Left Side Cover -->
+            <div class="md:w-1/2 bg-slate-50 p-8 flex items-center justify-center">
+                <img id="modalImg" class="max-h-72 object-contain" src="" alt="">
+            </div>
+
+            <!-- Right Side Specs -->
+            <div class="md:w-1/2 p-6 flex flex-col justify-between space-y-6">
+                <div>
+                    <span id="modalYear" class="bg-blue-50 text-blue-600 text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase"></span>
+                    <h3 id="modalTitle" class="text-xl font-extrabold text-slate-900 mt-2 leading-snug"></h3>
+                    <p id="modalAuthor" class="text-slate-400 text-xs mt-1"></p>
+
+                    <!-- Star rating -->
+                    <div class="flex items-center gap-1.5 mt-3">
+                        <div class="flex text-amber-400 text-xs" id="modalStars"></div>
+                        <span id="modalReviews" class="text-slate-400 text-xs"></span>
+                    </div>
+
+                    <!-- Book Specifications -->
+                    <div class="grid grid-cols-2 gap-3 mt-6 border-t border-b border-slate-100 py-4 text-xs">
+                        <div>
+                            <span class="block text-slate-400 font-medium">Edition Type</span>
+                            <span id="modalPrint" class="font-bold text-slate-700">Original Print</span>
+                        </div>
+                        <div>
+                            <span class="block text-slate-400 font-medium">Binding Format</span>
+                            <span id="modalBinding" class="font-bold text-slate-700">Paperback</span>
+                        </div>
+                        <div>
+                            <span class="block text-slate-400 font-medium">Dispatch Guarantee</span>
+                            <span class="font-bold text-green-600 flex items-center gap-1"><i class="fa-solid fa-circle-check text-[10px]"></i> Within 24h</span>
+                        </div>
+                        <div>
+                            <span class="block text-slate-400 font-medium">Delivery Method</span>
+                            <span class="font-bold text-slate-700">COD Available</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-baseline gap-2 mb-4">
+                        <span id="modalPrice" class="text-2xl font-extrabold text-slate-900"></span>
+                        <span id="modalOriginalPrice" class="text-sm text-slate-400 line-through"></span>
+                    </div>
+                    <button id="modalAddBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-blue-100 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-bag-shopping"></i> Add to Shopping Bag
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE-OUT CART DRAWERS -->
+    <div id="cartOverlay" onclick="toggleCart(false)" class="fixed inset-0 bg-black/50 hidden z-50 transition-opacity duration-300"></div>
+    <div id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-cart-shopping text-blue-600 text-lg"></i>
+                <h3 class="font-bold text-lg text-slate-900">Your Shopping Bag</h3>
+            </div>
+            <button onclick="toggleCart(false)" class="p-2 hover:bg-slate-100 rounded-lg text-slate-400 hover:text-slate-600 transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <!-- Scrollable content area -->
+        <div class="flex-1 overflow-y-auto p-6" id="cartBody">
+            <div id="cartItemsList" class="space-y-4">
+                <!-- Dynamic Cart Rows -->
+            </div>
+            
+            <!-- Shipping Form -->
+            <div id="shippingForm" class="hidden space-y-4 pt-4">
+                <button onclick="showCartList()" class="text-xs font-bold text-blue-600 flex items-center gap-1.5 mb-2 hover:underline">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Basket
+                </button>
+                <h4 class="font-bold text-sm text-slate-900 border-b pb-2">Delivery & Shipping details</h4>
+                <div class="space-y-3 text-xs">
+                    <div>
+                        <label class="block font-bold text-slate-500 mb-1">Full Name *</label>
+                        <input type="text" id="customerName" placeholder="e.g. Ali Ahmed" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-500 mb-1">Contact Phone Number *</label>
+                        <input type="tel" id="customerPhone" placeholder="e.g. 03001234567" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-500 mb-1">Medical College / BDS Institution *</label>
+                        <input type="text" id="customerCollege" placeholder="e.g. KEMU / AIMC" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <label class="block font-bold text-slate-500">Hostel Room No. & Hall Address *</label>
+                            <!-- AUTO-DETECT LOCATION BUTTON -->
+                            <button onclick="autoDetectLocation()" type="button" id="locationBtn" class="text-[10px] font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-colors">
+                                <i class="fa-solid fa-location-crosshairs text-xs"></i> Auto-Detect GPS
+                            </button>
+                        </div>
+                        <textarea id="customerAddress" rows="3" placeholder="e.g. Room 42, Jinnah Hall, New Hostel Campus (Or use 'Auto-Detect GPS' above)" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Cart Bottom Actions -->
+        <div class="p-6 border-t border-slate-100 bg-slate-50 space-y-4">
+            <div class="flex justify-between items-center text-sm">
+                <span class="text-slate-500 font-medium">Total Books:</span>
+                <span id="cartTotalItems" class="font-bold text-slate-900">0</span>
+            </div>
+            <div class="flex justify-between items-baseline">
+                <span class="text-slate-900 font-bold">Estimated Total:</span>
+                <span class="text-2xl font-extrabold text-blue-600" id="cartTotalSum">Rs. 0</span>
+            </div>
+            
+            <!-- Dynamic button controls -->
+            <div id="cartActionArea">
+                <button onclick="goToCheckout()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-blue-100 flex items-center justify-center gap-2 text-sm">
+                    Proceed to Delivery <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATIONS BANNER -->
+    <div id="toastContainer" class="fixed bottom-5 right-5 flex flex-col gap-2 z-50"></div>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-100 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-400 text-xs">
+            <p>&copy; 2026 MusaBooks. High-definition clinical prints. Curated with excellence.</p>
+        </div>
+    </footer>
+
+    <!-- CONTROLLER SCRIPTS -->
+    <script>
+        const REAL_COVERS = {
+          davidsons: "https://secure-ecsd.elsevier.com/covers/80/Tango2/largest/9780702083471.jpg", 
+          guyton: "https://secure-ecsd.elsevier.com/covers/80/Tango2/large/9780443111013.jpg",      
+          inam_danish: "https://fareedbookcentre.com/cdn/shop/products/InamDanish_large.jpg",      
+          inayatullah_bedside: "https://paramountbooks.com.pk/cdn/shop/products/9786273100432.jpg", 
+          robbins_pathology: "https://secure-ecsd.elsevier.com/covers/80/Tango2/large/9780323531672.jpg", 
+          gray_anatomy: "https://secure-ecsd.elsevier.com/covers/80/Tango2/large/9780702077050.jpg",      
+          
+          generic_anatomy: "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=600&q=80",
+          generic_pharma: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80",
+          generic_pathology: "https://images.unsplash.com/photo-1579154204601-01588f351167?auto=format&fit=crop&w=600&q=80",
+          generic_clinical: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80",
+          generic_dental: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80"
+        };
+
+        const medicalBooks = [
+          {
+            id: "b1",
+            title: "BD Chaurasia's Human Anatomy (4 Volume Set)",
+            author: "B.D. Chaurasia",
+            category: "Anatomy",
+            year: "1st Year MBBS",
+            price: 4500,
+            originalPrice: 5200,
+            rating: 4.8,
+            reviews: 124,
+            image: REAL_COVERS.generic_anatomy,
+            isBestSeller: true,
+            inStock: true,
+            binding: "Paperback (Set)",
+            printQuality: "Original Color Print"
+          },
+          {
+            id: "b2",
+            title: "Guyton and Hall Textbook of Medical Physiology",
+            author: "John E. Hall & Michael E. Hall",
+            category: "Physiology",
+            year: "1st & 2nd Year MBBS",
+            price: 3850,
+            originalPrice: 4500,
+            rating: 4.9,
+            reviews: 215,
+            image: REAL_COVERS.guyton,
+            isBestSeller: true,
+            inStock: true,
+            binding: "Hardcover Bound",
+            printQuality: "International Student Edition"
+          },
+          {
+            id: "b3",
+            title: "Gray's Anatomy for Students (South Asian Edition)",
+            author: "Richard Drake",
+            category: "Anatomy",
+            year: "1st Year MBBS",
+            price: 5200,
+            originalPrice: 6000,
+            rating: 4.7,
+            reviews: 98,
+            image: REAL_COVERS.gray_anatomy,
+            isBestSeller: false,
+            inStock: true,
+            binding: "Paperback Soft",
+            printQuality: "Authentic Regional Edition"
+          },
+          {
+            id: "b4",
+            title: "Medical Biochemistry",
+            author: "Dr. Mushtaq Ahmad",
+            category: "Biochemistry",
+            year: "1st Year MBBS",
+            price: 1100,
+            originalPrice: 1350,
+            rating: 4.5,
+            reviews: 74,
+            image: REAL_COVERS.generic_clinical,
+            isBestSeller: false,
+            inStock: true,
+            binding: "Paperback Soft",
+            printQuality: "Standard Academic Print"
+          },
+          {
+            id: "b5",
+            title: "Laiq Hussain's Medical Histology",
+            author: "Laiq Hussain Siddiqui",
+            category: "Anatomy",
+            year: "1st Year MBBS",
+            price: 1650,
+            originalPrice: 1950,
+            rating: 4.6,
+            reviews: 83,
+            image: REAL_COVERS.generic_anatomy,
+            isBestSeller: false,
+            inStock: false,
+            binding: "Paperback",
+            printQuality: "Clear High Definition"
+          },
+          {
+            id: "b6",
+            title: "Robbins Basic Pathology (10th Edition)",
+            author: "Kumar, Abbas, Aster",
+            category: "Pathology",
+            year: "3rd Year MBBS",
+            price: 3200,
+            originalPrice: 3800,
+            rating: 4.8,
+            reviews: 142,
+            image: REAL_COVERS.robbins_pathology,
+            isBestSeller: true,
+            inStock: true,
+            binding: "Hardbound Deluxe",
+            printQuality: "Full Color Illustrations"
+          },
+          {
+            id: "b7",
+            title: "Lippincott Illustrated Reviews: Pharmacology",
+            author: "Karen Whalen",
+            category: "Pharmacology",
+            year: "3rd Year MBBS",
+            price: 2400,
+            originalPrice: 2900,
+            rating: 4.7,
+            reviews: 112,
+            image: REAL_COVERS.generic_pharma,
+            isBestSeller: true,
+            inStock: true,
+            binding: "Paperback Standard",
+            printQuality: "Lippincott Premium Print"
+          },
+          {
+            id: "b8",
+            title: "Bedside Techniques: Methods of Clinical Examination",
+            author: "Muhammad Inayatullah",
+            category: "Specialities",
+            year: "3rd & Final Year MBBS",
+            price: 845,
+            originalPrice: 995,
+            rating: 4.9,
+            reviews: 312,
+            image: REAL_COVERS.inayatullah_bedside,
+            isBestSeller: true,
+            inStock: true,
+            binding: "Paperback Pocket",
+            printQuality: "Authorized Local Reprint"
+          },
+          {
+            id: "b9",
+            title: "Levinson's Review of Medical Microbiology and Immunology",
+            author: "Warren E. Levinson",
+            category: "Pathology",
+            year: "3rd Year MBBS",
+            price: 2150,
+            originalPrice: 2500,
+            rating: 4.6,
+            reviews: 67,
+            image: REAL_COVERS.generic_pathology,
+            isBestSeller: false,
+            inStock: true,
+            binding: "Paperback Standard",
+            printQuality: "Standard Color Plate Print"
+          },
+          {
+            id: "b10",
+            title: "Davidson's Principles and Practice of Medicine (24th Edition)",
+            author: "Mark W.J. Strachan et al.",
+            category: "Medicine",
+            year: "Final Year MBBS",
+            price: 4950,
+            originalPrice: 5800,
+            rating: 4.9,
+            reviews: 189,
+            image: REAL_COVERS.davidsons,
+            isBestSeller: true,
+            inStock: true,
+            binding: "Hardcover Prestige",
+            printQuality: "Premium Global Release"
+          },
+          {
+            id: "b11",
+            title: "Short Textbook of Medical Diagnosis and Management",
+            author: "Mohammad Inam Danish",
+            category: "Medicine",
+            year: "Final Year MBBS",
+            price: 1350,
+            originalPrice: 1600,
+            rating: 4.7,
+            reviews: 156,
+            image: REAL_COVERS.inam_danish,
+            isBestSeller: false,
+            inStock: true,
+            binding: "Paperback",
+            printQuality: "Local Premium Edition"
+          },
+          {
+            id: "b12",
+            title: "Bailey & Love's Short Practice of Surgery",
+            author: "Norman Williams et al.",
+            category: "Surgery",
+            year: "Final Year MBBS",
+            price: 5800,
+            originalPrice: 6500,
+            rating: 4.9,
+            reviews: 143,
+            image: REAL_COVERS.generic_clinical,
+            isBestSeller: true,
+            inStock: true,
+            binding: "Hardcover Bound (Set)",
+            printQuality: "Imported Authentic Print"
+          },
+          {
+            id: "b13",
+            title: "Ten Teachers Gynaecology (20th Edition)",
+            author: "Louise C. Kenny",
+            category: "Gynaecology",
+            year: "Final Year MBBS",
+            price: 1800,
+            originalPrice: 2200,
+            rating: 4.8,
+            reviews: 89,
+            image: REAL_COVERS.generic_clinical,
+            isBestSeller: false,
+            inStock: true,
+            binding: "Paperback Soft",
+            printQuality: "Standard Premium Paper"
+          },
+          {
+            id: "b14",
+            title: "Wheeler's Dental Anatomy, Physiology and Occlusion",
+            author: "Stanley J. Nelson",
+            category: "Dental",
+            year: "1st Year BDS",
+            price: 2950,
+            originalPrice: 3500,
+            rating: 4.7,
+            reviews: 55,
+            image: REAL_COVERS.generic_dental,
+            isBestSeller: true,
+            inStock: true,
+            binding: "Hardcover Student",
+            printQuality: "Clear Dentition Render Prints"
+          },
+          {
+            id: "b15",
+            title: "Phillips' Science of Dental Materials",
+            author: "Kenneth J. Anusavice",
+            category: "Dental",
+            year: "2nd Year BDS",
+            price: 3400,
+            originalPrice: 4000,
+            rating: 4.8,
+            reviews: 42,
+            image: REAL_COVERS.generic_dental,
+            isBestSeller: false,
+            inStock: false,
+            binding: "Hardbound Standard",
+            printQuality: "True-Color Material Reference"
+          }
+        ];
+
+        let activeCategory = 'All';
+        let searchQuery = '';
+        let cart = [];
+        let filterStockOnly = false;
+        let activeSort = 'featured';
+
+        // Renders Cards in Grid View
+        function renderBooks() {
+            const grid = document.getElementById('bookGrid');
+            grid.innerHTML = '';
+
+            let filtered = medicalBooks.filter(book => {
+                const matchesCategory = activeCategory === 'All' || book.category === activeCategory;
+                const matchesSearch = book.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                      book.author.toLowerCase().includes(searchQuery.toLowerCase());
+                const matchesStock = !filterStockOnly || book.inStock;
+                return matchesCategory && matchesSearch && matchesStock;
+            });
+
+            // Handle Sorting Rules
+            if (activeSort === 'low-high') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (activeSort === 'high-low') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (activeSort === 'rating') {
+                filtered.sort((a, b) => b.rating - a.rating);
+            }
+
+            document.getElementById('bookCount').innerText = `Showing ${filtered.length} books`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-16 text-center text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass text-4xl mb-3 text-slate-300 animate-pulse"></i>
+                        <p class="font-medium text-sm">No textbook resources match your search or filters.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(book => {
+                const discount = Math.round(((book.originalPrice - book.price) / book.originalPrice) * 100);
+                
+                const card = document.createElement('div');
+                card.className = "bg-white border border-slate-100 rounded-2xl overflow-hidden hover:shadow-xl hover:border-slate-200 transition-all duration-300 flex flex-col justify-between group";
+                card.innerHTML = `
+                    <div onclick="openBookDetails('${book.id}')" class="relative bg-slate-50/50 aspect-[3/4] overflow-hidden flex items-center justify-center p-5 cursor-pointer">
+                        ${book.isBestSeller ? '<span class="absolute top-3 left-3 bg-amber-500 text-white text-[9px] px-2 py-0.5 rounded font-bold uppercase tracking-wider z-10 shadow-sm">Bestseller</span>' : ''}
+                        ${!book.inStock ? '<span class="absolute top-3 left-3 bg-slate-500 text-white text-[9px] px-2 py-0.5 rounded font-bold uppercase tracking-wider z-10 shadow-sm">Out of Stock</span>' : ''}
+                        <span class="absolute top-3 right-3 bg-blue-50 text-blue-600 text-[10px] px-2 py-0.5 rounded-md font-bold z-10">${discount}% OFF</span>
+                        <img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" 
+                             src="${book.image}" 
+                             alt="${book.title}" 
+                             onerror="this.src='https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80'">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div onclick="openBookDetails('${book.id}')" class="cursor-pointer">
+                            <div class="flex items-center gap-1.5 text-blue-600 text-[10px] font-extrabold tracking-wider uppercase mb-1">
+                                <span>${book.category}</span>
+                                <span>•</span>
+                                <span class="text-slate-500">${book.year}</span>
+                            </div>
+                            <h3 class="font-extrabold text-sm text-slate-800 line-clamp-2 leading-snug hover:text-blue-600 transition-colors mb-1" title="${book.title}">${book.title}</h3>
+                            <p class="text-slate-400 text-[11px] mb-2 font-medium">${book.author}</p>
+                            <div class="flex items-center gap-1 mb-4">
+                                <div class="flex text-amber-400 text-[10px]">
+                                    ${'<i class="fa-solid fa-star"></i>'.repeat(Math.floor(book.rating))}
+                                    ${book.rating % 1 !== 0 ? '<i class="fa-solid fa-star-half-stroke"></i>' : ''}
+                                </div>
+                                <span class="text-slate-400 text-[10px] font-bold">(${book.reviews})</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-baseline gap-2 mb-4">
+                                <span class="text-lg font-black text-slate-900">Rs. ${book.price.toLocaleString()}</span>
+                                <span class="text-xs text-slate-400 line-through">Rs. ${book.originalPrice.toLocaleString()}</span>
+                            </div>
+                            <div class="grid grid-cols-5 gap-2">
+                                <button onclick="addToCart('${book.id}')" ${book.inStock ? '' : 'disabled class="col-span-4 bg-slate-200 text-slate-400 text-xs font-bold py-3 rounded-xl cursor-not-allowed flex items-center justify-center"'} class="col-span-4 bg-slate-900 hover:bg-blue-600 text-white text-xs font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-bag-shopping text-xs"></i> Add Order
+                                </button>
+                                <button onclick="openBookDetails('${book.id}')" class="col-span-1 bg-slate-100 hover:bg-blue-50 text-slate-500 hover:text-blue-600 rounded-xl transition-colors flex items-center justify-center">
+                                    <i class="fa-regular fa-eye text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Display Detailed Modal
+        window.openBookDetails = (id) => {
+            const book = medicalBooks.find(b => b.id === id);
+            if (!book) return;
+
+            document.getElementById('modalTitle').innerText = book.title;
+            document.getElementById('modalAuthor').innerText = `By ${book.author}`;
+            document.getElementById('modalYear').innerText = `${book.category} • ${book.year}`;
+            document.getElementById('modalPrice').innerText = `Rs. ${book.price.toLocaleString()}`;
+            document.getElementById('modalOriginalPrice').innerText = `Rs. ${book.originalPrice.toLocaleString()}`;
+            document.getElementById('modalImg').src = book.image;
+            document.getElementById('modalPrint').innerText = book.printQuality;
+            document.getElementById('modalBinding').innerText = book.binding;
+            document.getElementById('modalReviews').innerText = `(${book.reviews} customer reviews)`;
+            
+            const starsContainer = document.getElementById('modalStars');
+            starsContainer.innerHTML = `
+                ${'<i class="fa-solid fa-star"></i>'.repeat(Math.floor(book.rating))}
+                ${book.rating % 1 !== 0 ? '<i class="fa-solid fa-star-half-stroke"></i>' : ''}
+            `;
+
+            const addBtn = document.getElementById('modalAddBtn');
+            if (book.inStock) {
+                addBtn.innerText = "Add to Shopping Bag";
+                addBtn.removeAttribute('disabled');
+                addBtn.className = "w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-blue-100 flex items-center justify-center gap-2";
+                addBtn.setAttribute('onclick', `addToCart('${book.id}'); closeModal();`);
+            } else {
+                addBtn.innerText = "Out of Stock";
+                addBtn.setAttribute('disabled', 'true');
+                addBtn.className = "w-full bg-slate-200 text-slate-400 font-bold py-3 rounded-xl cursor-not-allowed flex items-center justify-center gap-2";
+            }
+
+            const modal = document.getElementById('bookModal');
+            const content = document.getElementById('modalContent');
+            modal.classList.replace('hidden', 'flex');
+            setTimeout(() => {
+                content.classList.replace('scale-95', 'scale-100');
+                content.classList.replace('opacity-0', 'opacity-100');
+            }, 10);
+        };
+
+        window.closeModal = () => {
+            const modal = document.getElementById('bookModal');
+            const content = document.getElementById('modalContent');
+            content.classList.replace('scale-100', 'scale-95');
+            content.classList.replace('opacity-100', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.replace('flex', 'hidden');
+            }, 150);
+        };
+
+        window.filterCategory = (category) => {
+            activeCategory = category;
+            document.getElementById('sectionTitle').innerText = category === 'All' ? 'All Academic Catalogues' : `${category} Department`;
+            
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                if (btn.innerText.includes(category) || (category === 'All' && btn.innerText.includes('All'))) {
+                    btn.className = "category-btn px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 bg-blue-600 text-white shadow-lg shadow-blue-100 shrink-0";
+                } else {
+                    btn.className = "category-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 shrink-0";
+                }
+            });
+            renderBooks();
+        };
+
+        window.sortBooks = () => {
+            activeSort = document.getElementById('sortBy').value;
+            renderBooks();
+        };
+
+        window.toggleStockOnly = () => {
+            filterStockOnly = document.getElementById('stockOnly').checked;
+            renderBooks();
+        };
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderBooks();
+        });
+
+        // Toast Messages
+        function triggerToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = "bg-slate-900/95 backdrop-blur-md text-white px-5 py-3 rounded-xl shadow-2xl text-xs font-bold flex items-center gap-3 transition-all duration-300 transform translate-y-2 opacity-0 border border-white/10";
+            
+            const icon = type === 'success' 
+                ? '<i class="fa-solid fa-circle-check text-green-400 text-sm"></i>' 
+                : '<i class="fa-solid fa-circle-exclamation text-red-400 text-sm"></i>';
+                
+            toast.innerHTML = `${icon} <span>${message}</span>`;
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.replace('translate-y-2', 'translate-y-0');
+                toast.classList.replace('opacity-0', 'opacity-100');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.replace('translate-y-0', 'translate-y-2');
+                toast.classList.replace('opacity-100', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        window.toggleCart = (isOpen) => {
+            const overlay = document.getElementById('cartOverlay');
+            const drawer = document.getElementById('cartDrawer');
+            
+            if (isOpen) {
+                overlay.classList.remove('hidden');
+                setTimeout(() => drawer.classList.remove('translate-x-full'), 10);
+                showCartList(); // Reset view back to list
+                renderCartDrawer();
+            } else {
+                drawer.classList.add('translate-x-full');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        };
+
+        window.addToCart = (id) => {
+            const book = medicalBooks.find(b => b.id === id);
+            if (!book) return;
+            
+            const existingItem = cart.find(item => item.bookId === id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ bookId: id, quantity: 1 });
+            }
+            updateCartIconCount();
+            triggerToast(`Added ${book.title.split(' ')[0]} to cart.`);
+        };
+
+        function updateCartIconCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').innerText = count;
+        }
+
+        function renderCartDrawer() {
+            const container = document.getElementById('cartItemsList');
+            container.innerHTML = '';
+
+            let totalItems = 0;
+            let totalPrice = 0;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-center text-slate-400 py-16">
+                        <i class="fa-solid fa-cart-flatbed text-5xl mb-4 text-slate-200"></i>
+                        <p class="font-extrabold text-slate-700 text-sm">Your basket is empty</p>
+                        <p class="text-[11px] text-slate-400 mt-1 max-w-[200px]">Add standard medical textbooks to start your order.</p>
+                    </div>
+                `;
+            } else {
+                cart.forEach((item) => {
+                    const book = medicalBooks.find(b => b.id === item.bookId);
+                    if (!book) return;
+
+                    totalItems += item.quantity;
+                    totalPrice += (book.price * item.quantity);
+
+                    const row = document.createElement('div');
+                    row.className = "flex gap-4 bg-slate-50 p-4 rounded-xl border border-slate-100 relative group";
+                    row.innerHTML = `
+                        <img class="w-12 h-16 object-contain rounded bg-white p-1 border" src="${book.image}" alt="${book.title}">
+                        <div class="flex-1 min-w-0 flex flex-col justify-between">
+                            <div>
+                                <h4 class="text-xs font-extrabold text-slate-800 truncate" title="${book.title}">${book.title}</h4>
+                                <p class="text-[10px] text-slate-400 truncate">${book.author}</p>
+                            </div>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="text-xs font-black text-slate-900">Rs. ${(book.price * item.quantity).toLocaleString()}</span>
+                                <div class="flex items-center border border-slate-200 bg-white rounded-lg overflow-hidden">
+                                    <button onclick="adjustQuantity('${item.bookId}', -1)" class="px-2 py-0.5 text-xs text-slate-500 hover:bg-slate-50 hover:text-red-500 transition-colors">-</button>
+                                    <span class="px-2 py-0.5 text-xs font-bold text-slate-700 bg-slate-50/50">${item.quantity}</span>
+                                    <button onclick="adjustQuantity('${item.bookId}', 1)" class="px-2 py-0.5 text-xs text-slate-500 hover:bg-slate-50 hover:text-blue-500 transition-colors">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(row);
+                });
+            }
+
+            document.getElementById('cartTotalItems').innerText = totalItems;
+            document.getElementById('cartTotalSum').innerText = `Rs. ${totalPrice.toLocaleString()}`;
+        }
+
+        window.adjustQuantity = (id, amount) => {
+            const item = cart.find(i => i.bookId === id);
+            if (!item) return;
+
+            item.quantity += amount;
+            if (item.quantity <= 0) {
+                cart = cart.filter(i => i.bookId !== id);
+                triggerToast("Item removed from basket.", "remove");
+            }
+            updateCartIconCount();
+            renderCartDrawer();
+        };
+
+        // Navigation within Drawer
+        window.goToCheckout = () => {
+            if (cart.length === 0) {
+                triggerToast("Please add items to your cart first.", "remove");
+                return;
+            }
+            document.getElementById('cartItemsList').classList.add('hidden');
+            document.getElementById('shippingForm').classList.remove('hidden');
+            
+            // Swap action button
+            document.getElementById('cartActionArea').innerHTML = `
+                <button onclick="submitOrder()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-emerald-100 flex items-center justify-center gap-2 text-sm">
+                    Confirm Order via WhatsApp <i class="fa-brands fa-whatsapp"></i>
+                </button>
+            `;
+        };
+
+        window.showCartList = () => {
+            document.getElementById('cartItemsList').classList.remove('hidden');
+            document.getElementById('shippingForm').classList.add('hidden');
+            
+            // Restore original checkout navigation button
+            document.getElementById('cartActionArea').innerHTML = `
+                <button onclick="goToCheckout()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-blue-100 flex items-center justify-center gap-2 text-sm">
+                    Proceed to Delivery <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            `;
+        };
+
+        // NEW GEOLOCATION AUTO-DETECTION FUNCTION
+        window.autoDetectLocation = () => {
+            const addressArea = document.getElementById('customerAddress');
+            const btn = document.getElementById('locationBtn');
+            
+            if (!navigator.geolocation) {
+                triggerToast("Geolocation not supported by browser.", "error");
+                return;
+            }
+
+            btn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> Detecting...`;
+            btn.disabled = true;
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude.toFixed(6);
+                    const lng = position.coords.longitude.toFixed(6);
+                    
+                    // Injects coordinates directly into textarea
+                    addressArea.value = `📍 GPS Location: (Lat: ${lat}, Lng: ${lng})\nRoom/Hall details: `;
+                    addressArea.focus();
+                    
+                    triggerToast("Location auto-detected successfully!");
+                    btn.innerHTML = `<i class="fa-solid fa-circle-check text-green-500"></i> Location Linked`;
+                    btn.disabled = false;
+                },
+                (error) => {
+                    btn.innerHTML = `<i class="fa-solid fa-location-crosshairs"></i> Auto-Detect GPS`;
+                    btn.disabled = false;
+                    
+                    if (error.code === error.PERMISSION_DENIED) {
+                        triggerToast("Permission denied. Please type address.", "error");
+                    } else {
+                        triggerToast("Unable to detect GPS. Please write manually.", "error");
+                    }
+                },
+                { enableHighAccuracy: true, timeout: 8000 }
+            );
+        };
+
+        // Dispatch Checkout Details to Owner WhatsApp Channel
+        window.submitOrder = () => {
+            const name = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+            const college = document.getElementById('customerCollege').value.trim();
+            const address = document.getElementById('customerAddress').value.trim();
+
+            if (!name || !phone || !college || !address) {
+                alert("Please fill in all shipping details to process your Cash on Delivery order.");
+                return;
+            }
+
+            // Generate beautifully ordered list for WhatsApp
+            let totalAmount = 0;
+            let bookDetailsText = "";
+            
+            cart.forEach((item, index) => {
+                const book = medicalBooks.find(b => b.id === item.bookId);
+                if (book) {
+                    const subtotal = book.price * item.quantity;
+                    totalAmount += subtotal;
+                    bookDetailsText += `${index + 1}. *${book.title}* \n   Qty: ${item.quantity}x — Rs. ${subtotal.toLocaleString()}\n`;
+                }
+            });
+
+            const message = `📚 *NEW ORDER RECEIVED - MUSABOOKS* 📚\n\n` +
+                            `👤 *Customer Name:* ${name}\n` +
+                            `📞 *Phone:* ${phone}\n` +
+                            `🏫 *College:* ${college}\n` +
+                            `📍 *Hostel/Delivery Address:* ${address}\n\n` +
+                            `📝 *Books Ordered:* \n${bookDetailsText}\n` +
+                            `💰 *Total Estimated COD Bill:* Rs. ${totalAmount.toLocaleString()}\n\n` +
+                            `⚡ Please confirm and dispatch my shipment. Thanks!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/923124244895?text=${encodedMessage}`;
+
+            // Reset cart & open WhatsApp
+            window.open(whatsappURL, '_blank');
+            cart = [];
+            updateCartIconCount();
+            toggleCart(false);
+            
+            // Clean inputs
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerPhone').value = '';
+            document.getElementById('customerCollege').value = '';
+            document.getElementById('customerAddress').value = '';
+            document.getElementById('locationBtn').innerHTML = `<i class="fa-solid fa-location-crosshairs"></i> Auto-Detect GPS`;
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderBooks();
+        });
+    </script>
+</body>
+</html>
